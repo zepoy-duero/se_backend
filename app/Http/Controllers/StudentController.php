@@ -15,6 +15,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'student_id' => 'required|string|max:100',
             'first_name' => 'required|string|max:100',
             'last_name' => 'required|string|max:100',
             'date_of_birth' => 'required|date',
@@ -27,14 +28,15 @@ class StudentController extends Controller
 
     public function show($id)
     {
-        return Student::findOrFail($id);
+        return Student::where('student_id', $id)->first();
     }
 
     public function update(Request $request, $id)
     {
-        $student = Student::findOrFail($id);
+        $student = Student::where('student_id', $id)->first();
 
         $validatedData = $request->validate([
+            'student_id' => 'required|string|max:100',
             'first_name' => 'string|max:100',
             'last_name' => 'string|max:100',
             'date_of_birth' => 'date',
@@ -48,9 +50,8 @@ class StudentController extends Controller
 
     public function destroy($id)
     {
-        $student = Student::findOrFail($id);
+        $student = where('student_id', $id);
         $student->delete();
         return response()->json(['message' => 'Student deleted successfully']);
     }
 }
-
