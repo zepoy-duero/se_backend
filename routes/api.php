@@ -6,6 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ProgramProspectusController;
 use App\Http\Controllers\StudentProspectusController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\EvaluationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,4 @@ Route::apiResource('students', StudentController::class);
 Route::apiResource('program-prospectuses', ProgramProspectusController::class);
 Route::apiResource('student-prospectuses', StudentProspectusController::class);
 Route::apiResource('grades', GradeController::class);
+Route::post('/evaluate', [EvaluationController::class, 'evaluate']);
