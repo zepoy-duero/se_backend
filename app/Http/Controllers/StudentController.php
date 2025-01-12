@@ -15,12 +15,17 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'student_id' => 'required|string|max:100',
-            'first_name' => 'required|string|max:100',
-            'last_name' => 'required|string|max:100',
+            'student_id' => 'required|unique:students',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'middle_name' => 'nullable',
+            'gender' => 'required',
             'date_of_birth' => 'required|date',
-            'email' => 'required|email|unique:students,email',
-            'address' => 'required|string|max:255',
+            'email' => 'required|email|unique:students',
+            'address' => 'required',
+            'course' => 'required',
+            'year_level' => 'required',
+            'college_department' => 'required',
         ]);
 
         return Student::create($validatedData);
@@ -36,14 +41,18 @@ class StudentController extends Controller
         $student = Student::where('student_id', $id)->first();
 
         $validatedData = $request->validate([
-            'student_id' => 'required|string|max:100',
-            'first_name' => 'string|max:100',
-            'last_name' => 'string|max:100',
-            'date_of_birth' => 'date',
-            'email' => 'email|unique:students,email,' . $student->id,
-            'address' => 'string|max:255',
+            'student_id' => "required|unique:students,student_id,{$student->id}",
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'middle_name' => 'nullable',
+            'gender' => 'required',
+            'date_of_birth' => 'required|date',
+            'email' => "required|email|unique:students,email,{$student->id}",
+            'address' => 'required',
+            'course' => 'required',
+            'year_level' => 'required',
+            'college_department' => 'required',
         ]);
-
         $student->update($validatedData);
         return $student;
     }

@@ -9,7 +9,19 @@ class Student extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['first_name', 'last_name', 'date_of_birth', 'email', 'address'];
+    protected $fillable = [
+        'student_id',
+        'first_name',
+        'last_name',
+        'middle_name',
+        'gender',
+        'date_of_birth',
+        'email',
+        'address',
+        'course',
+        'year_level',
+        'college_department',
+    ];
 
     public function studentProspectuses()
     {
