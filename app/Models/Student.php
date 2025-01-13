@@ -23,7 +23,7 @@ class Student extends Model
         'college_department',
     ];
 
-    public function studentProspectuses()
+    public function prospectuses()
     {
         return $this->hasMany(StudentProspectus::class);
     }

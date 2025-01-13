@@ -16,7 +16,7 @@ class StudentProspectusController extends Controller
     {
         $validatedData = $request->validate([
             'student_id' => 'required|exists:students,id',
-            'prospectus_id' => 'required|exists:program_prospectuses,id',
+            'prospectus_id' => 'required|exists:program_prospectus,id',
             'enrollment_date' => 'required|date',
         ]);
 
@@ -34,7 +34,7 @@ class StudentProspectusController extends Controller
 
         $validatedData = $request->validate([
             'student_id' => 'exists:students,id',
-            'prospectus_id' => 'exists:program_prospectuses,id',
+            'prospectus_id' => 'exists:program_prospectus,id',
             'enrollment_date' => 'date',
         ]);
 
@@ -50,4 +50,3 @@ class StudentProspectusController extends Controller
         return response()->json(['message' => 'Student prospectus deleted successfully']);
     }
 }
-

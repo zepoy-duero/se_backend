@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('students', StudentController::class);
-Route::apiResource('program-prospectuses', ProgramProspectusController::class);
-Route::apiResource('student-prospectuses', StudentProspectusController::class);
+Route::apiResource('program-prospectus', ProgramProspectusController::class);
+Route::apiResource('student-prospectus', StudentProspectusController::class);
 Route::apiResource('grades', GradeController::class);
 Route::post('/evaluate', [EvaluationController::class, 'evaluate']);

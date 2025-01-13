@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
+use function Laravel\Prompts\select;
+
 class StudentController extends Controller
 {
     public function index()
@@ -59,7 +61,7 @@ class StudentController extends Controller
 
     public function destroy($id)
     {
-        $student = where('student_id', $id);
+        $student = student::where('student_id', $id);
         $student->delete();
         return response()->json(['message' => 'Student deleted successfully']);
     }

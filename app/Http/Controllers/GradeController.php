@@ -32,7 +32,7 @@ class GradeController extends Controller
         $grade = Grade::findOrFail($id);
 
         $validatedData = $request->validate([
-            'student_prospectus_id' => 'exists:student_prospectuses,id',
+            'student_prospectus_id' => 'exists:student_prospectus,id',
             'grade_value' => 'numeric|min:0|max:100',
         ]);
 

@@ -1,8 +1,10 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 class StudentProspectus extends Model
 {
     use HasFactory;
@@ -14,7 +16,7 @@ class StudentProspectus extends Model
         return $this->belongsTo(Student::class);
     }
 
-    public function programProspectus()
+    public function programProspectuses()
     {
         return $this->belongsTo(ProgramProspectus::class, 'prospectus_id');
     }
