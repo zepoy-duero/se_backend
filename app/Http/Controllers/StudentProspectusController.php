@@ -9,7 +9,8 @@ class StudentProspectusController extends Controller
 {
     public function index()
     {
-        return StudentProspectus::with('student', 'programProspectus')->get();
+        // return StudentProspectus::with('student', 'programProspectus')->get();
+        return StudentProspectus::all();
     }
 
     public function store(Request $request)
