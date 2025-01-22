@@ -9,9 +9,22 @@ use function Laravel\Prompts\select;
 
 class StudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Student::all();
+        $query = Student::query();
+
+        if ($request->has('search')) {
+            $query->where('student_id', 'like', '%' . $request->search . '%')
+                ->orWhere('first_name', 'like', '%' . $request->search . '%')
+                ->orWhere('last_name', 'like', '%' . $request->search . '%');
+        }
+
+        $students = $query->paginate($request->itemsPerPage ?? 10);
+
+        return response()->json([
+            'data' => $students->items(),
+            'total' => $students->total(),
+        ]);
     }
 
     public function store(Request $request)
