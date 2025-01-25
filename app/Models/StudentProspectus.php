@@ -16,7 +16,7 @@ class StudentProspectus extends Model
         return $this->belongsTo(Student::class);
     }
 
-    public function programProspectuses()
+    public function programProspectus()
     {
         return $this->belongsTo(ProgramProspectus::class, 'prospectus_id');
     }

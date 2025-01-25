@@ -4,12 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProgramProspectusTable extends Migration
+class CreateProgramProspectusesTable extends Migration
 {
     public function up()
     {
-        Schema::create('program_prospectus', function (Blueprint $table) {
-            $table->id('prospectus_id');
+        Schema::create('program_prospectuses', function (Blueprint $table) {
+            $table->id('id');
             $table->string('program_of_study', 100);
             $table->string('course_code', 50);
             $table->string('course_title', 255);
@@ -23,6 +23,6 @@ class CreateProgramProspectusTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('program_prospectus');
+        Schema::dropIfExists('program_prospectuses');
     }
 }

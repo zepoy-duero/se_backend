@@ -26,4 +26,4 @@ Route::apiResource('students', StudentController::class);
 Route::apiResource('program-prospectus', ProgramProspectusController::class);
 Route::apiResource('student-prospectus', StudentProspectusController::class);
 Route::apiResource('grades', GradeController::class);
-Route::post('/evaluate', [StudentEvaluationController::class, 'evaluate']);
+Route::apiResource('evaluate', StudentEvaluationController::class);
