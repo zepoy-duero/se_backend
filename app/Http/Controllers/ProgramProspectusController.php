@@ -58,3 +58,4 @@ class ProgramProspectusController extends Controller
         return response()->json(['message' => 'Program prospectus deleted successfully']);
     }
 }
+

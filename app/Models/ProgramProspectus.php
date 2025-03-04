@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class ProgramProspectus extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'program_of_study', 
+        'course_code', 
+        'course_title', 
+        'no_of_hours_lec', 
+        'no_of_hours_lab', 
+        'credit_units', 
+        'pre_requisites'
+    ];
+
+    public function studentProspectus()
+    {
+        return $this->hasMany(StudentProspectus::class);
+    }
+}
