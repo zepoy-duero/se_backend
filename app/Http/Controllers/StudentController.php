@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Response;
 use function Laravel\Prompts\select;
 
 class StudentController extends Controller
@@ -21,7 +21,7 @@ class StudentController extends Controller
 
         $students = $query->paginate($request->itemsPerPage ?? 10);
 
-        return response()->json([
+        return Response::json([
             'data' => $students->items(),
             'total' => $students->total(),
         ]);
@@ -48,7 +48,7 @@ class StudentController extends Controller
 
     public function show($id)
     {
-        return Student::where('id', $id)->first();
+        return Student::where('student_id', $id)->first();
     }
 
     public function update(Request $request, $id)
@@ -76,6 +76,6 @@ class StudentController extends Controller
     {
         $student = student::where('student_id', $id);
         $student->delete();
-        return response()->json(['message' => 'Student deleted successfully']);
+        return Response::json(['message' => 'Student deleted successfully']);
     }
 }
