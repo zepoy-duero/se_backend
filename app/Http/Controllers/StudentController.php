@@ -48,7 +48,7 @@ class StudentController extends Controller
 
     public function show($id)
     {
-        return Student::where('student_id', $id)->first();
+        return Student::where('student_id', $id)->with('studentProspectuses')->first();
     }
 
     public function update(Request $request, $id)
