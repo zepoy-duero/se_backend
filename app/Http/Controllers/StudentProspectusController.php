@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\StudentProspectus;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentProspectusController extends Controller
@@ -15,12 +16,17 @@ class StudentProspectusController extends Controller
 
     public function store(Request $request)
     {
+        // $student = Student::where('student_id', $request->student_id)->first();
+        // $validatedData = $request->validate([
+        //     'student_id' => "required|unique:students,student_id,{$student->student_id}",
+        //     'prospectus_id' => 'required|exists:program_prospectuses,id',
+        //     'enrollment_date' => 'required|date',
+        // ]);
         $validatedData = $request->validate([
-            'student_id' => 'required|exists:students,id',
+            'student_id' => 'required|exists:students,student_id',
             'prospectus_id' => 'required|exists:program_prospectus,id',
             'enrollment_date' => 'required|date',
         ]);
-
         return StudentProspectus::create($validatedData);
     }
 
